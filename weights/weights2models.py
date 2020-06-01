@@ -37,6 +37,22 @@ del net
 #%% DenseNet
 net = models.densenet121()
 net.classifier = nn.Linear(1024,num_classes)
-# net.load_state_dict(torch.load("BC_densenet121.dct", map_location=torch.device('cpu')))
+net.load_state_dict(torch.load("BC_densenet121.dct", map_location=torch.device('cpu')))
 torch.save(net, "densenet121.pth")
 del net
+
+#%%
+from models_def import Xception
+net = Xception(3,2)
+net.load_state_dict(torch.load("BC_xception.dct", map_location=torch.device('cpu')))
+torch.save(net, "xception.pth")
+del net
+
+# %%
+from models_def import UNet
+net = UNet(3,2)
+net.load_state_dict(torch.load("BC_unet.dct", map_location=torch.device('cpu')))
+torch.save(net, "unet.pth")
+del net
+
+# %%
